@@ -1,25 +1,28 @@
 def bubble_sort_by(array)
 
-	swap=false
+	
 
 	loop do
 
-		(1..array.length).each do |x|
+		i, swap=0, 0
 
-			if yield(array[x-1], array[x])<0
-				array[x-1], array[x]=array[x], array[x-1]
-				swap=true
-			else
-				swap=false
+
+		while i<array.length-1
+
+			if yield(array[i], array[i+1])<0
+				array[i+1], array[i]=array[i], array[i+1]
+				swap+=1
 			end
+
+			i+=1
 
 		end
 
-		break if swap==false
+		break if swap==0
 		
 	end
 
-	array
+	print array
 	
 end
 
